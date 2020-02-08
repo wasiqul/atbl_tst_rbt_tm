@@ -57,4 +57,3 @@ LogoutAutobillTest
     LogoutKW
     Log    Loging out from Autobill
     
-    Log    this test executed by %{username} in %{os}

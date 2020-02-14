@@ -14,11 +14,13 @@ ${browser}                          chrome
 LoginKW
     Input Text                      id=email        &{credential}[username]  
     Input Password                  id=password     &{credential}[password]
-    Click Button                    class=login-button
+    Click Button                    class=login-button  
+    Element Text Should Be          xpath=//span[@class='dashboard-title']    Dashboard    
     
 LogoutKW
     Click Element                   class=place-holder-image 
     Click Element                   xpath=//span[contains(text(),'Logout')]   
+    Element Text Should Be          xpath=//div[@class='admin-login']    Sign In
     
 CreateAccountKW
     ${email-number}                 Generate Random String  8  [NUMBERS]
@@ -29,6 +31,7 @@ CreateAccountKW
     Input Text                      name=name    WasiqulAutobot    
     Input Text                      name=emailAddress    abc${email-number}@yoho.com
     Click Button                    xpath=//button[@class='submit-button common-tab-actions']  
+    Element Text Should Be          xpath=//span[@class='name']    WasiqulAutobot    
     
 *** Test Cases ***
 LoginAutobillTest
@@ -45,6 +48,7 @@ CreateAccountAutobillTest
     
     Set Selenium Speed              2 seconds
     Set Selenium Timeout            10 seconds
+    Set Browser Implicit Wait       5
     
     CreateAccountKW
     Log                             Creating an account
